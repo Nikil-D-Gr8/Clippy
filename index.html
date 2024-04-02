@@ -24,14 +24,22 @@
 
     <script>
         function copyTextToClipboard() {
-            var textToCopy = "Preexisting text to be copied to clipboard.";
+            var codeToCopy = `univarient
+import seaborn as sns
+import matplotlib.pyplot as plt
+penguins=sns.load_dataset('penguins')
+sns.distplot(penguins['flipper_length_mm'],bins=20)
+plt.show()
+sns.lineplot(x=penguins.index,y=penguins['flipper_length_mm'],marker='d',hue=penguins['species'])
+plt.show()
+sns.swarmplot(x=penguins['species'],y=penguins['flipper_length_mm'])
+plt.show()`;
             var tempInput = document.createElement("input");
-            tempInput.setAttribute("value", textToCopy);
+            tempInput.setAttribute("value", codeToCopy);
             document.body.appendChild(tempInput);
             tempInput.select();
             document.execCommand("copy");
             document.body.removeChild(tempInput);
-            alert("Text copied to clipboard!");
         }
     </script>
 </body>
